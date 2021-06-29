@@ -65,7 +65,7 @@ export default function SignUp() {
       password: "",
       confirmPassword: "",
     });
-    if (error?.response?.status === 403) {
+    if (error?.response?.status === 409) {
       alert("O e-mail inserido já está em uso");
     } else {
       alert("Um erro desconhecido ocorreu");
