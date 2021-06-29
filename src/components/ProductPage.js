@@ -20,20 +20,26 @@ export default function ProductPage() {
         quantity: 1
     }]);
 
-    useEffect(() => getProduct);
+    useEffect(() => {
+        getProduct();        
+    }, []);
 
-    function getProduct() {
+    function getProduct() {    
         const config = {
-            headers: { Authorization: `Bearer ${userInformation.token}` },
+            headers: { Authorization: `Bearer 1234` }, //alterar pra userInformation.token depois
         };
 
-        const request = axios.get(`http://localhost:4000/product/:${params.id}`,
+        const request = axios.get(`http://localhost:4000/product/${params.id}`,
             config
         );
 
-        request.then((resp) => setProduct(resp.data))
-        request.catch((e) => {console.log(e); alert("Ocorreu um erro ao obter as informações do produto, tente novamente")})
+        request.then((resp) => setProduct(resp.data));
+        request.catch((e) => {console.log(e); alert("Ocorreu um erro ao obter as informações do produto, tente novamente")});   
+                  
     }
+
+    console.log(product) 
+    
 
     function changeCounter(e, operator) {
         e.stopPropagation();
@@ -56,11 +62,11 @@ export default function ProductPage() {
     return (
         <Container>
             <Wrapper>                
-                  <img src="https://ae01.alicdn.com/kf/H5ed8ba0f675945069fe7dd458fc4717dr.jpg" alt="usb cable" />                                  
+                  <img src={product.image} alt="usb cable" />                                  
                 <Info>
-                    <div className="title"> Cabo USB 3.0 </div>
-                    <div className="price">R$50,00</div> 
-                    <div className="price-card">5x de R$10,00 sem juros</div>  
+                    <div className="title">{product.name}</div>
+                    <div className="price">R$ {(product.price/100).toFixed(2).replace(".",",").replace("-","")}</div> 
+                    <div className="price-card">5x de R${(product.price/100/5).toFixed(2).replace(".",",").replace("-","")} sem juros</div>  
                     <div className="shipping">Envio de: RJ - Brasil</div>  
                     <div className="title-quantity">Quantidade:</div>                  
                     <div className="wrap-counter">
@@ -80,21 +86,14 @@ export default function ProductPage() {
                         </button>
                        
                     </div>
-                    <div className="quantity-available-items">86475 itens disponíveis</div>
+                    <div className="quantity-available-items">{product.availableQuantity} itens disponíveis</div>
                     <AddToCart onClick={(e) => addToCart(e)}> Adicionar ao carrinho </AddToCart>             
                 </Info> 
                
                 <Description>
                 <HorizontalLine></HorizontalLine>
                     <div className="title">Descrição</div>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 
-                    nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    {product.description}
                 </Description>                           
             </Wrapper>                       
         </Container>
