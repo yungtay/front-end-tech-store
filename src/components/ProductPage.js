@@ -34,12 +34,8 @@ export default function ProductPage() {
         );
 
         request.then((resp) => setProduct(resp.data));
-        request.catch((e) => {console.log(e); alert("Ocorreu um erro ao obter as informações do produto, tente novamente")});   
-                  
-    }
-
-    console.log(product) 
-    
+        request.catch((e) => {console.log(e); alert("Ocorreu um erro ao obter as informações do produto, tente novamente")});                     
+    }     
 
     function changeCounter(e, operator) {
         e.stopPropagation();
