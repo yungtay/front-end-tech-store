@@ -31,7 +31,7 @@ export default function SignIn() {
       }
     }
     const request = axios
-      .post("http:localhost:4000/sign-in", signIn)
+      .post("http://localhost:4000/sign-in", signIn)
       .then(submitSucess)
       .catch(submitFail);
   }
