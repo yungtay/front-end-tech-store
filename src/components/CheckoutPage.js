@@ -55,6 +55,10 @@ export default function CheckoutPage() {
                         <option value="Boleto">Boleto</option>
                         <option value="PIX">PIX</option>
                     </select>
+                    <ImgWrapper>
+                        <img src="https://ae01.alicdn.com/kf/HTB1fNUEaNrvK1RjSsze761ObFXaX.png"></img>
+                        <img src="https://ae01.alicdn.com/kf/HTB1xDsCaODxK1Rjy1zc761GeXXae.png"></img>
+                    </ImgWrapper>
                     <CloseOrder type="submit">Finalizar compra</CloseOrder>
                     </Form>                                
                 <Link to="/products"> 
@@ -173,7 +177,7 @@ const OrderResume = styled.div`
     justify-content: space-evenly;  
     font-size: 30px; 
     padding-top: 50px;
-
+   
     .title{
         font-weight: bold;
         margin-top: 20px;
@@ -240,6 +244,17 @@ const GoBack = styled.button`
     @media (max-width: 640px) {  
              
        width: 200px;    
+    }
+`;
+
+const ImgWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+    img {
+        width: 120px;
+        height: 50px;
     }
 `;
 
