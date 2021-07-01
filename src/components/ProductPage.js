@@ -53,8 +53,7 @@ export default function ProductPage() {
             setCart(newCart);
         }       
     }
-
-    console.log(cart);
+    
     return (
         <Container>
             <Wrapper>                
