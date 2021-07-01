@@ -3,23 +3,16 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import UserContext from "../context/UserContext";
+import { Link } from "react-router-dom";
+
 
 export default function ProductPage() {
-    const { userInformation } = useContext(UserContext);
+    
+    const { userInformation, cart, setCart } = useContext(UserContext);
     const params = useParams();
     const [counter, setCounter] = useState(1);
     const [product, setProduct] = useState([]);
-    const [cart, setCart] = useState([{
-        id: 3,
-        quantity: 2
-    },{
-        id: 4,
-        quantity: 4
-    }, {
-        id: 5,
-        quantity: 1
-    }]);
-
+   
     useEffect(() => {
         getProduct();        
     }, []);
@@ -48,13 +41,20 @@ export default function ProductPage() {
           control = true;
         }
     }
+    
 
     function addToCart(e) {
-        e.stopPropagation();       
-        const newCart = [...cart, { id: parseInt(params.id), quantity: counter}]
-        setCart(newCart)
+        e.stopPropagation();   
+        if(cart.length === 0) {            
+            const newCart = [{ id: parseInt(params.id), quantity: counter, price: product.price, name: product.name}]
+            setCart(newCart);
+        } else {
+            const newCart = [...cart, { id: parseInt(params.id), quantity: counter, price: product.price, name: product.name}]
+            setCart(newCart);
+        }       
     }
 
+    console.log(cart);
     return (
         <Container>
             <Wrapper>                
@@ -83,7 +83,10 @@ export default function ProductPage() {
                        
                     </div>
                     <div className="quantity-available-items">{product.availableQuantity} itens disponíveis</div>
-                    <AddToCart onClick={(e) => addToCart(e)}> Adicionar ao carrinho </AddToCart>             
+                    <AddToCart onClick={(e) => addToCart(e)}> Adicionar ao carrinho </AddToCart> 
+                    <Link to="/shopcart">
+                        <AddToCart> Ir para o carrinho </AddToCart>             
+                    </Link>
                 </Info> 
                
                 <Description>
@@ -285,6 +288,7 @@ const Description = styled.div`
     }
 `;
 
+export { Container }
 
 
 
