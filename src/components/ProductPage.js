@@ -29,7 +29,7 @@ export default function ProductPage() {
             headers: { Authorization: `Bearer 1234` }, //alterar pra userInformation.token depois
         };
 
-        const request = axios.get(`http://localhost:4000/product/${params.id}`,
+        const request = axios.get(`${process.env.REACT_APP_API_BASE_URL}/product/${params.id}`,
             config
         );
 
