@@ -42,7 +42,7 @@ export default function SignUp() {
     }
     const { confirmPassword, ...userInformation } = signUp;
     const request = axios
-      .post(`${process.env.REACT_APP_API_BASE_URL}`, userInformation)
+      .post(`${process.env.REACT_APP_API_BASE_URL}/sign-up`, userInformation)
       .then(submitSucess)
       .catch(submitFail);
   }
