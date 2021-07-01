@@ -12,15 +12,31 @@ export default function CheckoutPage() {
     const { userInformation, cart, setCart } = useContext(UserContext);
     const [totalPrice, setTotalPrice] = useState(0); 
     const [adress, setAdress] = useState("");    
-    const [selection, setSelection] = useState("");
-    console.log(selection)
+    const [selection, setSelection] = useState("");   
+    const [cpf, setCpf] = useState(null);
+    const [celNumber, setCelNumber] = useState(null);
 
     useEffect(() => 
         {setTotalPrice(cart.reduce((t, p) => t+(p.price*p.quantity),0))
     }, []);
 
     function closeOrder() {
-        alert(`fechando pedido ${adress} ${selection}`)        
+        const config = {
+            headers: { Authorization: `Bearer 1234` }, //alterar pra userInformation.token depois
+        };
+
+        const body = {
+            cpf,
+            celNumber,
+            adress,
+            selection,
+            totalPrice
+        }
+
+        const request = axios.post(`http://localhost:4000/checkout`, body, config);
+
+        request.then(alert("Sua compra foi finalizada com sucesso!"));
+        request.catch((e) => {console.log(e); alert("Ocorreu um erro finalizar sua compra, tente novamente")});                     
     }
 
     return (
@@ -46,24 +62,32 @@ export default function CheckoutPage() {
                         <label for="adress" className="adress">Endereço de entrega:</label>
                         <input type="text" className="adressInput" value={adress} onChange={(e) => setAdress(e.target.value)} required/>                        
                    
-                    <br />
-
-                    <label className="payment" for="payment">Selecione uma forma de pagamento:</label>
-                    <select className="select" value={selection} onChange={(e) => setSelection(e.target.value)} id="payment" name="payment" form="payment" required>
-                        <option value="Cartão de crédito">Cartão de crédito</option>
-                        <option value="Cartão de débito">Cartão de débito</option>
-                        <option value="Boleto">Boleto</option>
-                        <option value="PIX">PIX</option>
-                    </select>
+                    <br />                   
+                        
+                        <label className="cel">Insira seu CPF:</label>
+                        <input type="text" className="celInput" value={celNumber} onChange={(e) => setCelNumber(e.target.value)} required />
+                        <br />
+                        <label className="cpf">Insira seu número de celular:</label>
+                        <input type="text" className="cpfInput" value={cpf} onChange={(e) => setCpf(e.target.value)} required />
+                        <br/>
+                        <label className="payment" for="payment">Selecione uma forma de pagamento:</label>
+                            <select className="select" value={selection} onChange={(e) => setSelection(e.target.value)} id="payment" name="payment" form="payment" required>
+                                <option value="Cartão de crédito">Cartão de crédito</option>
+                                <option value="Cartão de débito">Cartão de débito</option>
+                                <option value="Boleto">Boleto</option>
+                                <option value="PIX">PIX</option>
+                            </select>
                     <ImgWrapper>
                         <img src="https://ae01.alicdn.com/kf/HTB1fNUEaNrvK1RjSsze761ObFXaX.png"></img>
                         <img src="https://ae01.alicdn.com/kf/HTB1xDsCaODxK1Rjy1zc761GeXXae.png"></img>
                     </ImgWrapper>
-                    <CloseOrder type="submit">Finalizar compra</CloseOrder>
-                    </Form>                                
-                <Link to="/products"> 
-                    <GoBack>Voltar para home</GoBack>                      
-                </Link> 
+                    <ButtonWrapper>
+                        <CloseOrder type="submit">Finalizar compra</CloseOrder>
+                        <Link to="/products"> 
+                            <GoBack>Voltar para home</GoBack>                      
+                        </Link> 
+                    </ButtonWrapper>
+                    </Form>                                            
             </OrderResume>        
         </Container>
     )
@@ -82,7 +106,7 @@ const Form = styled.form`
       margin-top: 30px;
     }
 
-    .adressInput {
+    .adressInput, .celInput, .cpfInput {
         border: 1px solid #B3E283;
         border-radius: 5px;
         font-size: 15px;
@@ -94,11 +118,10 @@ const Form = styled.form`
         }
     }
 
-    .payment{
+    .payment, .cpf, .cel {
         font-size: 20px;
-        margin-bottom: 5px;
-
-        
+        margin-bottom: 5px; 
+        margin-top: 5px;  
     }
 
     .select {
@@ -215,7 +238,7 @@ const TotalWrapper = styled.div`
 `;
 
 const CloseOrder = styled.button`  
-    margin-left: 60px;
+    margin-left: 40px;
     margin-top: 50px;  
     font-size: 20px;
     border-radius: 5px;   
@@ -223,7 +246,7 @@ const CloseOrder = styled.button`
     width: 300px;   
     padding: 20px;
     border: none;
-    background-color: #B3E283;
+    background-color: #B3E283;    
 
     @media (max-width: 640px) {           
         width: 200px;    
@@ -256,5 +279,9 @@ const ImgWrapper = styled.div`
         width: 120px;
         height: 50px;
     }
+`;
+
+const ButtonWrapper = styled.div`
+    display: flex;
 `;
 
