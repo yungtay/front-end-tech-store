@@ -4,12 +4,13 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import UserContext from "../context/UserContext";
 import Product from "./Product";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import CheckoutPage from "./CheckoutPage";
 
 export default function ShopcartPage() { 
     const { userInformation, cart, setCart } = useContext(UserContext); 
-    const [totalPrice, setTotalPrice] = useState(0);     
+    const [totalPrice, setTotalPrice] = useState(0); 
+    const history = useHistory();
 
     useEffect(() => 
         {setTotalPrice(cart.reduce((t, p) => t+(p.price*p.quantity),0))
@@ -33,9 +34,9 @@ export default function ShopcartPage() {
                     <div className="total-title">Total:</div> 
                     <div className="total-price">R$ {(totalPrice/100).toFixed(2).replace(".",",").replace("-","")}</div>
                 </TotalWrapper>
-                <Link to="/checkout">
-                    <CloseOrder>Fechar pedido</CloseOrder>
-                </Link> 
+                
+                    <CloseOrder onClick={() => history.push("/checkout")}>Fechar pedido</CloseOrder>
+                
                 <Link to="/products"> 
                     <GoBack>Voltar para home</GoBack>                      
                 </Link> 
@@ -104,7 +105,7 @@ const ProductsList = styled.div`
 
 const OrderResume = styled.div`   
     padding-left: 50px; 
-    padding-top: 50px;    
+    padding-top: 190px;    
     justify-content: space-evenly;  
     font-size: 30px; 
     

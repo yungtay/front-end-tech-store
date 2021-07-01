@@ -22,9 +22,8 @@ export default function ProductPage() {
             headers: { Authorization: `Bearer 1234` }, //alterar pra userInformation.token depois
         };
 
-        const request = axios.get(`${process.env.REACT_APP_API_BASE_URL}/product/${params.id}`,
-            config
-        );
+        const request = axios.get(`http://localhost:4000/product/${params.id}`, config)           
+        ;
 
         request.then((resp) => setProduct(resp.data));
         request.catch((e) => {console.log(e); alert("Ocorreu um erro ao obter as informações do produto, tente novamente")});                     
