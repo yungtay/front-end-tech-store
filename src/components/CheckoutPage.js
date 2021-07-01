@@ -13,8 +13,8 @@ export default function CheckoutPage() {
     const [totalPrice, setTotalPrice] = useState(0); 
     const [adress, setAdress] = useState("");    
     const [selection, setSelection] = useState("");   
-    const [cpf, setCpf] = useState(null);
-    const [celNumber, setCelNumber] = useState(null);
+    const [cpf, setCpf] = useState("");
+    const [celNumber, setCelNumber] = useState("");
 
     useEffect(() => 
         {setTotalPrice(cart.reduce((t, p) => t+(p.price*p.quantity),0))
@@ -33,7 +33,7 @@ export default function CheckoutPage() {
             totalPrice
         }
 
-        const request = axios.post(`http://localhost:4000/checkout`, body, config);
+        const request = axios.post(`${process.env.REACT_APP_API_BASE_URL}checkout`, body, config);
 
         request.then(alert("Sua compra foi finalizada com sucesso!"));
         request.catch((e) => {console.log(e); alert("Ocorreu um erro finalizar sua compra, tente novamente")});                     
@@ -60,16 +60,14 @@ export default function CheckoutPage() {
                 <p className="title">Preencha seus dados:</p>
                     <Form onSubmit={closeOrder} id="paymentform">
                         <label for="adress" className="adress">Endereço de entrega:</label>
-                        <input type="text" className="adressInput" value={adress} onChange={(e) => setAdress(e.target.value)} required/>                        
-                   
-                    <br />                   
-                        
+                        <input type="text" className="adressInput" value={adress} onChange={(e) => setAdress(e.target.value)} required/>                                           
+                            <br />                                           
                         <label className="cel">Insira seu CPF:</label>
                         <input type="text" className="celInput" value={celNumber} onChange={(e) => setCelNumber(e.target.value)} required />
-                        <br />
+                            <br />
                         <label className="cpf">Insira seu número de celular:</label>
                         <input type="text" className="cpfInput" value={cpf} onChange={(e) => setCpf(e.target.value)} required />
-                        <br/>
+                            <br/>
                         <label className="payment" for="payment">Selecione uma forma de pagamento:</label>
                             <select className="select" value={selection} onChange={(e) => setSelection(e.target.value)} id="payment" name="payment" form="payment" required>
                                 <option value="Cartão de crédito">Cartão de crédito</option>
@@ -80,6 +78,8 @@ export default function CheckoutPage() {
                     <ImgWrapper>
                         <img src="https://ae01.alicdn.com/kf/HTB1fNUEaNrvK1RjSsze761ObFXaX.png"></img>
                         <img src="https://ae01.alicdn.com/kf/HTB1xDsCaODxK1Rjy1zc761GeXXae.png"></img>
+                        <img src="https://ae01.alicdn.com/kf/HTB1RS7DaOHrK1Rjy0Fl763saFXax.png"></img>
+                        <img src="https://ae01.alicdn.com/kf/HTB17y7yaIvrK1Rjy0Fe763TmVXaS.png"></img>
                     </ImgWrapper>
                     <ButtonWrapper>
                         <CloseOrder type="submit">Finalizar compra</CloseOrder>
