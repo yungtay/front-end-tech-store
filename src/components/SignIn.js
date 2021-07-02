@@ -14,7 +14,7 @@ export default function SignIn() {
     password: "",
   });
 
-  //if (userInformation) history.push("/home");
+  if (userInformation !== null) {history.push("/home");} 
 
   function submit(e) {
     e.preventDefault();
@@ -42,7 +42,7 @@ export default function SignIn() {
     setUserInformation(response.data)
     const userSerializados = JSON.stringify(response.data);
     localStorage.setItem("user", userSerializados);
-    history.push("/records");
+    history.push("/home");
   }
 
   function submitFail(error) {

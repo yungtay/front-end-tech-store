@@ -130,13 +130,22 @@ table {
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
 }
+html {
+  height: 100%;
+}
+
 body {
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: "Lato", sans-serif;
   background: #E99497;
+  /* background-image: linear-gradient(#E99497, #F3C583); */
 }
 strong {
   font-weight: bold;
 }
 a {
   text-decoration: none;
+  color: inherit;
 }
