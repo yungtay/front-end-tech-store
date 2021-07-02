@@ -96,7 +96,7 @@ const Title = styled.div`
   align-items: center;
   margin: 80px 0 40px 0;
 
-  color: #f3c583;
+  color: #f3f583;
   font-size: 52px;
   font-family: "Saira Stencil One", cursive;
 `;

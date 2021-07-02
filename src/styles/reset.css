@@ -139,8 +139,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Lato", sans-serif;
-  background: #E99497;
-  /* background-image: linear-gradient(#E99497, #F3C583); */
+  background-image: linear-gradient(#E99497, #F3C583);
 }
 strong {
   font-weight: bold;

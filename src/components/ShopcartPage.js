@@ -4,19 +4,22 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import UserContext from "../context/UserContext";
 import Product from "./Product";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import CheckoutPage from "./CheckoutPage";
+import NavBar from "./NavBar"
 
 export default function ShopcartPage() { 
     const { userInformation, cart, setCart } = useContext(UserContext); 
-    const [totalPrice, setTotalPrice] = useState(0);     
+    const [totalPrice, setTotalPrice] = useState(0); 
+    const history = useHistory();
 
     useEffect(() => 
         {setTotalPrice(cart.reduce((t, p) => t+(p.price*p.quantity),0))
     }, []);
    
     return (
-        <Container>  
+        <Container>
+            <NavBar/>  
             <Wrapper>          
                 <Title>Carrinho ({cart.length})</Title>            
                 <ProductsList>  
@@ -33,10 +36,10 @@ export default function ShopcartPage() {
                     <div className="total-title">Total:</div> 
                     <div className="total-price">R$ {(totalPrice/100).toFixed(2).replace(".",",").replace("-","")}</div>
                 </TotalWrapper>
-                <Link to="/checkout">
-                    <CloseOrder>Fechar pedido</CloseOrder>
-                </Link> 
-                <Link to="/products"> 
+                
+                    <CloseOrder onClick={() => history.push("/checkout")}>Fechar pedido</CloseOrder>
+                
+                <Link to="/home"> 
                     <GoBack>Voltar para home</GoBack>                      
                 </Link> 
             </OrderResume>        
@@ -49,8 +52,7 @@ const Container = styled.div`
     background-color: #fff;  
     display: flex;    
     font-family: 'Raleway', sans-serif;
-    max-width: 100vw;     
-    height: 100vh;    
+    height: 100vh;
     justify-content: center;
     padding-top: 100px;
     padding-bottom: 100px;    
@@ -104,7 +106,7 @@ const ProductsList = styled.div`
 
 const OrderResume = styled.div`   
     padding-left: 50px; 
-    padding-top: 50px;    
+    padding-top: 190px;    
     justify-content: space-evenly;  
     font-size: 30px; 
     

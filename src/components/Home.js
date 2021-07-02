@@ -25,7 +25,7 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <ContainerBackground>
       <NavBar />
       <ContainerProducts>
         {products.map((product, index) => (
@@ -47,14 +47,13 @@ export default function Home() {
           </Link>
         ))}
       </ContainerProducts>
-    </>
+    </ContainerBackground>
   );
 }
 
 const ContainerProducts = styled.div`
   width: 100%;
-  margin-top: 200px;
-  padding: 0px 50px 100px 50px;
+  padding: 200px 50px 100px 50px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
   grid-column-gap: calc((2% * 4) / 3);
@@ -94,4 +93,9 @@ const Quantity = styled.div`
 
 const ProductName = styled.div`
   font-size: 23px;
+`;
+
+const ContainerBackground = styled.div`
+  height: 100vh;
+  background-image: linear-gradient(#F3C583, white);
 `;

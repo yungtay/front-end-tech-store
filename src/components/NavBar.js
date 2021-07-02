@@ -114,8 +114,8 @@ export default function NavBar() {
         <ModalDialog>
           <div>Você deseja deslogar ?</div>
           <div>
-            <button onClick={(e) => LogOut(userInformation, setUserInformation, history,)}>Deslogar</button>
-            <button onClick={() => setIsOpen(false)}>Cancelar</button>
+            <ButtonLogout onClick={(e) => LogOut(userInformation, setUserInformation, history,)}>Deslogar</ButtonLogout>
+            <ButtonCancel onClick={() => setIsOpen(false)}>Cancelar</ButtonCancel>
           </div>
         </ModalDialog>
       </Modal>
@@ -137,7 +137,7 @@ const ContainerNavBar = styled.div`
 `;
 
 const Logo = styled.div`
-  color: #f3c583;
+  color: #f3a580;
   font-size: 52px;
   font-family: "Saira Stencil One", cursive;
 
@@ -223,6 +223,25 @@ const ModalDialog = styled.div`
     border-radius: 50px;
   }
 `;
+
+const ButtonLogout = styled.button`
+    border: 2px solid #E99497;
+    background: white;
+    font-size: 22px;
+    @media (max-width: 800px) {
+      font-size: 18px;
+    }
+`
+const ButtonCancel = styled.button`
+    border: 2px solid #B3E283;
+    background: white;
+    font-size: 22px;
+    @media (max-width: 800px) {
+      font-size: 18px;
+    }
+
+`
+
 
 const customStyles = {
   content: {
