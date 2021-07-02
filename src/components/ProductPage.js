@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import UserContext from "../context/UserContext";
 import { Link } from "react-router-dom";
+import NavBar from "./NavBar"
 
 
 export default function ProductPage() {
@@ -55,6 +56,7 @@ export default function ProductPage() {
     
     return (
         <Container>
+            <NavBar/>
             <Wrapper>                
                   <img src={product.image} alt="usb cable" />                                  
                 <Info>
@@ -116,18 +118,16 @@ const Wrapper = styled.div`
         padding: 0px;
         padding-top: 100px;        
     }
-
     img {
         width: 450px;
         height: 500px;
-
+        object-fit: scale-down;
         @media (max-width: 350px) {
             width: 200px;
             height: 230px;
             margin-top: 20px;
             margin-bottom: 20px;
         }
-
         @media (max-width: 640px) {    
             width: 250px;
             height: 300px;
@@ -135,7 +135,6 @@ const Wrapper = styled.div`
             margin-bottom: 20px;
         }
     }
-
    
 `;
 
@@ -143,7 +142,6 @@ const Wrapper = styled.div`
 const Info = styled.div`      
     padding-left: 100px;
     border-left: 3px solid #F3C583;    
-
     @media (max-width: 640px) {
         padding-left: 10px;
         border: 0;
@@ -152,67 +150,54 @@ const Info = styled.div`
         align-items: center;
         justify-content: center;
     }
-
     .title {
         font-size: 50px;  
         font-weight: bold;
-
         @media (max-width: 640px) {            
             font-size: 30px;       
             text-align: center;
         }
     }
-
     .price {
         font-size: 30px;
         margin-top: 20px;
-
         @media (max-width: 640px) {            
             font-size: 15px;       
             text-align: center;
         }
     }
-
     .price-card, .shipping {
         font-size: 20px;
         margin-top: 20px;
-
         @media (max-width: 640px) {            
             font-size: 15px;       
             text-align: center;
         }
     }
-
     .title-quantity {
         margin-top: 80px;
         font-size: 25px;
-
         @media (max-width: 640px) {            
             font-size: 20px;       
             text-align: center;
         }
     }
-
     .quantity-available-items{
         padding-top: 20px;
         color: gray;
-
         @media (max-width: 640px) {            
             font-size: 15px;       
             text-align: center;
         }
     }
-
     .wrap-counter {
         margin-top: 10px;
         font-size: 20px;
         display:flex;
-
         @media (max-width: 640px) {            
             align-items: center;
             justify-content: center;
         }     
-
         .counter-left, .counter-right {
             background-color: #B3E283;
             border-radius: 15px;
@@ -222,18 +207,14 @@ const Info = styled.div`
             height: 30px;            
             font-size: 25px;
         }
-
         .counter-left {
             margin-right: 10px;            
         }
-
         .counter-right {
             margin-left: 10px;
         }      
-
         .text-counter {
             font-size: 25px;
-
             @media (max-width: 640px) {            
                 font-size: 20px;
             }
@@ -286,7 +267,6 @@ const HorizontalLine = styled.div`
 const Description = styled.div`   
     width: 100%;
     line-height: 2em;
-
     @media (max-width: 640px) {            
         font-size: 15px;   
         text-align: center;          
@@ -297,7 +277,6 @@ const Description = styled.div`
         margin-bottom: 15px;
         font-size: 40px;
         line-height: 1.5em;        
-
         @media (max-width: 640px) {            
             font-size: 25px;  
             text-align: center;
@@ -306,7 +285,3 @@ const Description = styled.div`
 `;
 
 export { Container }
-
-
-
-

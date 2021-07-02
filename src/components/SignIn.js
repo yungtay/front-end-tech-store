@@ -14,7 +14,7 @@ export default function SignIn() {
     password: "",
   });
 
-  //if (userInformation) history.push("/home");
+  if (userInformation !== null) {history.push("/home");} 
 
   function submit(e) {
     e.preventDefault();
@@ -42,7 +42,7 @@ export default function SignIn() {
     setUserInformation(response.data)
     const userSerializados = JSON.stringify(response.data);
     localStorage.setItem("user", userSerializados);
-    history.push("/records");
+    history.push("/home");
   }
 
   function submitFail(error) {
@@ -96,7 +96,7 @@ const Title = styled.div`
   align-items: center;
   margin: 80px 0 40px 0;
 
-  color: #f3c583;
+  color: #f3f583;
   font-size: 52px;
   font-family: "Saira Stencil One", cursive;
 `;

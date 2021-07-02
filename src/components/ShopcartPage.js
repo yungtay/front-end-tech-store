@@ -3,6 +3,9 @@ import { useContext, useEffect, useState } from "react";
 import UserContext from "../context/UserContext";
 import Product from "./Product";
 import { Link, useHistory } from "react-router-dom";
+import CheckoutPage from "./CheckoutPage";
+import NavBar from "./NavBar"
+
 
 export default function ShopcartPage() { 
     const { cart } = useContext(UserContext); 
@@ -14,7 +17,8 @@ export default function ShopcartPage() {
     }, []);
    
     return (
-        <Container>  
+        <Container>
+            <NavBar/>  
             <Wrapper>          
                 <Title>Carrinho ({cart.length})</Title>            
                 <ProductsList>  
@@ -47,8 +51,7 @@ const Container = styled.div`
     background-color: #fff;  
     display: flex;    
     font-family: 'Raleway', sans-serif;
-    max-width: 100vw;     
-    height: 100vh;    
+    height: 100vh;
     justify-content: center;
     padding-top: 100px;
     padding-bottom: 100px;    
