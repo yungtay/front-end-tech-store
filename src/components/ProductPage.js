@@ -232,6 +232,7 @@ const AddToCart = styled.button`
     border: none;
     background-color: #B3E283;
     margin-left: 15px;
+
     @media (max-width: 640px) {            
         font-size: 15px;
         padding: 5px;
@@ -249,6 +250,7 @@ const GoToCart = styled.button`
     border: none;
     background-color: #E99497;
     margin-left: 15px;
+
     @media (max-width: 640px) {            
         font-size: 15px;
         padding: 10px;

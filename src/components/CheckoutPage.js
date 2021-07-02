@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 import Product from "./Product";
 
 
-
 export default function CheckoutPage() {   
     const { userInformation, cart, setCart } = useContext(UserContext);
     const [totalPrice, setTotalPrice] = useState(0); 
@@ -22,23 +21,24 @@ export default function CheckoutPage() {
 
     function closeOrder() {
         const config = {
-            headers: { Authorization: `Bearer 1234` }, //alterar pra userInformation.token depois
+            headers: { Authorization: `Bearer ${userInformation}` }, //alterar pra userInformation.token depois
         };
 
         const body = {
             cpf,
             celNumber,
             adress,
-            selection,
-            totalPrice
+            payment: selection,
+            total: totalPrice,
+            cart
         }
 
-        const request = axios.post(`${process.env.REACT_APP_API_BASE_URL}checkout`, body, config);
+        const request = axios.post(`${process.env.REACT_APP_API_BASE_URL}/checkout`, body, config);
 
         request.then(alert("Sua compra foi finalizada com sucesso!"));
         request.catch((e) => {console.log(e); alert("Ocorreu um erro finalizar sua compra, tente novamente")});                     
     }
-
+   
     return (
         <Container>  
             <Wrapper>          
@@ -59,16 +59,16 @@ export default function CheckoutPage() {
                 </TotalWrapper>                
                 <p className="title">Preencha seus dados:</p>
                     <Form onSubmit={closeOrder} id="paymentform">
-                        <label for="adress" className="adress">Endereço de entrega:</label>
-                        <input type="text" className="adressInput" value={adress} onChange={(e) => setAdress(e.target.value)} required/>                                           
+                        <label htmlFor="adress" className="adress">Endereço de entrega:</label>
+                        <input id="adress" type="text" className="adressInput" value={adress} onChange={(e) => setAdress(e.target.value)} required/>                                           
                             <br />                                           
-                        <label className="cel">Insira seu CPF:</label>
-                        <input type="text" className="celInput" value={celNumber} onChange={(e) => setCelNumber(e.target.value)} required />
+                        <label htmlFor="cel" className="cel">Insira seu CPF:</label>
+                        <input id="cel" type="number" className="celInput" value={celNumber} onChange={(e) => setCelNumber(e.target.value)} required />
                             <br />
-                        <label className="cpf">Insira seu número de celular:</label>
-                        <input type="text" className="cpfInput" value={cpf} onChange={(e) => setCpf(e.target.value)} required />
+                        <label htmlFor="cpf" className="cpf">Insira seu número de celular:</label>
+                        <input id="cpf" type="number" className="cpfInput" value={cpf} onChange={(e) => setCpf(e.target.value)} required />
                             <br/>
-                        <label className="payment" for="payment">Selecione uma forma de pagamento:</label>
+                        <label className="payment" htmlFor="payment">Selecione uma forma de pagamento:</label>
                             <select className="select" value={selection} onChange={(e) => setSelection(e.target.value)} id="payment" name="payment" form="payment" required>
                                 <option value="Cartão de crédito">Cartão de crédito</option>
                                 <option value="Cartão de débito">Cartão de débito</option>
@@ -76,14 +76,14 @@ export default function CheckoutPage() {
                                 <option value="PIX">PIX</option>
                             </select>
                     <ImgWrapper>
-                        <img src="https://ae01.alicdn.com/kf/HTB1fNUEaNrvK1RjSsze761ObFXaX.png"></img>
-                        <img src="https://ae01.alicdn.com/kf/HTB1xDsCaODxK1Rjy1zc761GeXXae.png"></img>
-                        <img src="https://ae01.alicdn.com/kf/HTB1RS7DaOHrK1Rjy0Fl763saFXax.png"></img>
-                        <img src="https://ae01.alicdn.com/kf/HTB17y7yaIvrK1Rjy0Fe763TmVXaS.png"></img>
+                        <img src="https://ae01.alicdn.com/kf/HTB1fNUEaNrvK1RjSsze761ObFXaX.png" alt="credit-card"></img>
+                        <img src="https://ae01.alicdn.com/kf/HTB1xDsCaODxK1Rjy1zc761GeXXae.png" alt="credit-card"></img>
+                        <img src="https://ae01.alicdn.com/kf/HTB1RS7DaOHrK1Rjy0Fl763saFXax.png" alt="credit-card"></img>
+                        <img src="https://ae01.alicdn.com/kf/HTB17y7yaIvrK1Rjy0Fe763TmVXaS.png" alt="credit-card"></img>
                     </ImgWrapper>
                     <ButtonWrapper>
                         <CloseOrder type="submit">Finalizar compra</CloseOrder>
-                        <Link to="/products"> 
+                        <Link to="/home"> 
                             <GoBack>Voltar para home</GoBack>                      
                         </Link> 
                     </ButtonWrapper>
@@ -100,6 +100,17 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (max-width: 640px) {
+        width: 100vw; 
+        align-items: center;
+    }
+
+  input {
+    @media (max-width: 640px) {
+        width: 60vw;              
+    }
+  }
 
     .adress { 
       font-size: 20px;
@@ -122,6 +133,7 @@ const Form = styled.form`
         font-size: 20px;
         margin-bottom: 5px; 
         margin-top: 5px;  
+        text-align: center;
     }
 
     .select {
@@ -130,6 +142,10 @@ const Form = styled.form`
         border: 1px solid #B3E283;
         border-radius: 5px;
         background-color: white;
+
+        @media (max-width: 640px) {
+            width: 60vw;              
+        }
 
         :focus {
             box-shadow: 0 0 0.5em #B3E283;
@@ -238,7 +254,7 @@ const TotalWrapper = styled.div`
 `;
 
 const CloseOrder = styled.button`  
-    margin-left: 40px;
+    margin-left: 30px;
     margin-top: 50px;  
     font-size: 20px;
     border-radius: 5px;   
@@ -249,7 +265,13 @@ const CloseOrder = styled.button`
     background-color: #B3E283;    
 
     @media (max-width: 640px) {           
-        width: 200px;    
+        width: 200px;   
+        padding: 10px; 
+        margin-left: 20px;
+    }
+
+    @media (max-width: 320px) {  
+        margin-left: 20px;                    
     }
 `;
 
@@ -265,8 +287,13 @@ const GoBack = styled.button`
     background-color: #F3C583;
 
     @media (max-width: 640px) {  
-             
+        margin-left: 20px;             
        width: 200px;    
+       padding: 10px; 
+    }
+
+    @media (max-width: 320px) {  
+        margin-left: 20px;                    
     }
 `;
 
@@ -278,10 +305,20 @@ const ImgWrapper = styled.div`
     img {
         width: 120px;
         height: 50px;
+
+        @media (max-width: 640px) {
+            width: 80px;
+            height: 35px;   
+        }
     }
 `;
 
 const ButtonWrapper = styled.div`
     display: flex;
+
+    @media (max-width: 640px) {               
+        flex-direction: column;
+    }
+
 `;
 

@@ -1,18 +1,17 @@
 import styled from "styled-components";
-import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
 import UserContext from "../context/UserContext";
 import Product from "./Product";
 import { Link, useHistory } from "react-router-dom";
 import CheckoutPage from "./CheckoutPage";
 import NavBar from "./NavBar"
 
+
 export default function ShopcartPage() { 
-    const { userInformation, cart, setCart } = useContext(UserContext); 
+    const { cart } = useContext(UserContext); 
     const [totalPrice, setTotalPrice] = useState(0); 
     const history = useHistory();
-
+  
     useEffect(() => 
         {setTotalPrice(cart.reduce((t, p) => t+(p.price*p.quantity),0))
     }, []);
