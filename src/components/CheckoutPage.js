@@ -38,10 +38,7 @@ export default function CheckoutPage() {
         request.then(alert("Sua compra foi finalizada com sucesso!"));
         request.catch((e) => {console.log(e); alert("Ocorreu um erro finalizar sua compra, tente novamente")});                     
     }
-    console.log(adress)
-    console.log(cpf)
-    console.log(celNumber)
-
+   
     return (
         <Container>  
             <Wrapper>          
