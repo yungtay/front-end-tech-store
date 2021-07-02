@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import UserContext from "../context/UserContext";
 
 export default function Product({ item }) {
      
@@ -16,6 +13,8 @@ export default function Product({ item }) {
 const Container = styled.div`
     display: flex;
     flex-direction: wrap;
+    align-items: center;
+    justify-content: center;
 `;
 
 const Title = styled.div`

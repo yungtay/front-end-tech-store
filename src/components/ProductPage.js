@@ -83,7 +83,7 @@ export default function ProductPage() {
                     <div className="quantity-available-items">{product.availableQuantity} itens disponíveis</div>
                     <AddToCart onClick={(e) => addToCart(e)}> Adicionar ao carrinho </AddToCart> 
                     <Link to="/shopcart">
-                        <AddToCart> Ir para o carrinho </AddToCart>             
+                        <GoToCart> Ir para o carrinho </GoToCart>             
                     </Link>
                 </Info> 
                
@@ -141,7 +141,7 @@ const Wrapper = styled.div`
 
 
 const Info = styled.div`      
-    padding-left: 250px;
+    padding-left: 100px;
     border-left: 3px solid #F3C583;    
 
     @media (max-width: 640px) {
@@ -246,14 +246,33 @@ const AddToCart = styled.button`
     font-size: 20px;
     border-radius: 5px;   
     cursor: pointer; 
-    width: 300px;   
+    width: 240px;   
     padding: 20px;
     border: none;
     background-color: #B3E283;
+    margin-left: 15px;
 
     @media (max-width: 640px) {            
         font-size: 15px;
         padding: 5px;
+        width: 150px;      
+    }
+`;
+
+const GoToCart = styled.button`
+    margin-top: 80px;
+    font-size: 20px;
+    border-radius: 5px;   
+    cursor: pointer; 
+    width: 240px;   
+    padding: 20px;
+    border: none;
+    background-color: #E99497;
+    margin-left: 15px;
+
+    @media (max-width: 640px) {            
+        font-size: 15px;
+        padding: 10px;
         width: 150px;      
     }
 `;
