@@ -7,11 +7,8 @@ export default function Product({ item }) {
      
     return (
         <Container>
-            <Title>{item.name} Quantidade: ({item.quantity}) </Title>                                       
-            <br />   
-            <Price>
-            Preço unitário: R${(item.price/100).toFixed(2).replace(".",",").replace("-","")}
-            </Price>         
+            <Title>{item.name} Quantidade: ({item.quantity}) <br/>Preço unitário: R${(item.price/100).toFixed(2).replace(".",",").replace("-","")} </Title>                                       
+            <br />                    
         </Container>
     )
 }
@@ -30,10 +27,3 @@ const Title = styled.div`
     }
 `;
 
-const Price = styled.div`
-    font-size: 25px;
-
-    @media (max-width: 640px) {           
-       font-size: 15px;    
-    }
-`;

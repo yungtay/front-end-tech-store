@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function ProductPage() {
     
-    const { userInformation, cart, setCart } = useContext(UserContext);
+    const { userInformation, cart, setCart } = useContext(UserContext); 
     const params = useParams();
     const [counter, setCounter] = useState(1);
     const [product, setProduct] = useState([]);
@@ -19,10 +19,10 @@ export default function ProductPage() {
 
     function getProduct() {    
         const config = {
-            headers: { Authorization: `Bearer 1234` }, //alterar pra userInformation.token depois
+            headers: { Authorization: `Bearer ${userInformation}` }, 
         };
 
-        const request = axios.get(`${process.env.REACT_APP_API_BASE_URL}product/${params.id}`, config)           
+        const request = axios.get(`${process.env.REACT_APP_API_BASE_URL}/product/${params.id}`, config)           
         ;
 
         request.then((resp) => setProduct(resp.data));

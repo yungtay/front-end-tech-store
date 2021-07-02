@@ -11,7 +11,7 @@ export default function ShopcartPage() {
     const { userInformation, cart, setCart } = useContext(UserContext); 
     const [totalPrice, setTotalPrice] = useState(0); 
     const history = useHistory();
-
+  
     useEffect(() => 
         {setTotalPrice(cart.reduce((t, p) => t+(p.price*p.quantity),0))
     }, []);
@@ -37,7 +37,7 @@ export default function ShopcartPage() {
                 
                     <CloseOrder onClick={() => history.push("/checkout")}>Fechar pedido</CloseOrder>
                 
-                <Link to="/products"> 
+                <Link to="/product/2"> 
                     <GoBack>Voltar para home</GoBack>                      
                 </Link> 
             </OrderResume>        
