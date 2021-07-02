@@ -46,6 +46,150 @@ export default function Home() {
             </Product>
           </Link>
         ))}
+                {products.map((product, index) => (
+          <Link to={`/product/${product.id}`} key={index}>
+            <Product>
+              <Description>
+                <ProductName>{product.name}</ProductName>
+                <div>
+                  <img src={product.image} alt={`${product.name}`} />
+                </div>
+                <div>
+                  <div>
+                    R$ {(product.price / 100).toFixed(2).replace(".", ",")}
+                  </div>
+                  <Quantity>{product.availableQuantity} em estoque</Quantity>
+                </div>
+              </Description>
+            </Product>
+          </Link>
+        ))}
+                {products.map((product, index) => (
+          <Link to={`/product/${product.id}`} key={index}>
+            <Product>
+              <Description>
+                <ProductName>{product.name}</ProductName>
+                <div>
+                  <img src={product.image} alt={`${product.name}`} />
+                </div>
+                <div>
+                  <div>
+                    R$ {(product.price / 100).toFixed(2).replace(".", ",")}
+                  </div>
+                  <Quantity>{product.availableQuantity} em estoque</Quantity>
+                </div>
+              </Description>
+            </Product>
+          </Link>
+        ))}
+                {products.map((product, index) => (
+          <Link to={`/product/${product.id}`} key={index}>
+            <Product>
+              <Description>
+                <ProductName>{product.name}</ProductName>
+                <div>
+                  <img src={product.image} alt={`${product.name}`} />
+                </div>
+                <div>
+                  <div>
+                    R$ {(product.price / 100).toFixed(2).replace(".", ",")}
+                  </div>
+                  <Quantity>{product.availableQuantity} em estoque</Quantity>
+                </div>
+              </Description>
+            </Product>
+          </Link>
+        ))}
+                {products.map((product, index) => (
+          <Link to={`/product/${product.id}`} key={index}>
+            <Product>
+              <Description>
+                <ProductName>{product.name}</ProductName>
+                <div>
+                  <img src={product.image} alt={`${product.name}`} />
+                </div>
+                <div>
+                  <div>
+                    R$ {(product.price / 100).toFixed(2).replace(".", ",")}
+                  </div>
+                  <Quantity>{product.availableQuantity} em estoque</Quantity>
+                </div>
+              </Description>
+            </Product>
+          </Link>
+        ))}
+                {products.map((product, index) => (
+          <Link to={`/product/${product.id}`} key={index}>
+            <Product>
+              <Description>
+                <ProductName>{product.name}</ProductName>
+                <div>
+                  <img src={product.image} alt={`${product.name}`} />
+                </div>
+                <div>
+                  <div>
+                    R$ {(product.price / 100).toFixed(2).replace(".", ",")}
+                  </div>
+                  <Quantity>{product.availableQuantity} em estoque</Quantity>
+                </div>
+              </Description>
+            </Product>
+          </Link>
+        ))}
+                {products.map((product, index) => (
+          <Link to={`/product/${product.id}`} key={index}>
+            <Product>
+              <Description>
+                <ProductName>{product.name}</ProductName>
+                <div>
+                  <img src={product.image} alt={`${product.name}`} />
+                </div>
+                <div>
+                  <div>
+                    R$ {(product.price / 100).toFixed(2).replace(".", ",")}
+                  </div>
+                  <Quantity>{product.availableQuantity} em estoque</Quantity>
+                </div>
+              </Description>
+            </Product>
+          </Link>
+        ))}
+                {products.map((product, index) => (
+          <Link to={`/product/${product.id}`} key={index}>
+            <Product>
+              <Description>
+                <ProductName>{product.name}</ProductName>
+                <div>
+                  <img src={product.image} alt={`${product.name}`} />
+                </div>
+                <div>
+                  <div>
+                    R$ {(product.price / 100).toFixed(2).replace(".", ",")}
+                  </div>
+                  <Quantity>{product.availableQuantity} em estoque</Quantity>
+                </div>
+              </Description>
+            </Product>
+          </Link>
+        ))}
+                {products.map((product, index) => (
+          <Link to={`/product/${product.id}`} key={index}>
+            <Product>
+              <Description>
+                <ProductName>{product.name}</ProductName>
+                <div>
+                  <img src={product.image} alt={`${product.name}`} />
+                </div>
+                <div>
+                  <div>
+                    R$ {(product.price / 100).toFixed(2).replace(".", ",")}
+                  </div>
+                  <Quantity>{product.availableQuantity} em estoque</Quantity>
+                </div>
+              </Description>
+            </Product>
+          </Link>
+        ))}
       </ContainerProducts>
     </ContainerBackground>
   );
@@ -96,6 +240,6 @@ const ProductName = styled.div`
 `;
 
 const ContainerBackground = styled.div`
-  height: 100vh;
+  height: 100%;
   background-image: linear-gradient(#F3C583, white);
 `;

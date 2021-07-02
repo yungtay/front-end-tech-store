@@ -215,7 +215,7 @@ const Container = styled.div`
   display: flex;
   font-family: "Raleway", sans-serif;
   max-width: 100vw;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
   padding-top: 100px;
   padding-bottom: 100px;

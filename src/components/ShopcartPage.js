@@ -51,7 +51,7 @@ const Container = styled.div`
     background-color: #fff;  
     display: flex;    
     font-family: 'Raleway', sans-serif;
-    height: 100vh;
+    height: 100%;
     justify-content: center;
     padding-top: 100px;
     padding-bottom: 100px;    
