@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import UserContext from "../context/UserContext";
 
 export default function Product({ item }) {
   return (

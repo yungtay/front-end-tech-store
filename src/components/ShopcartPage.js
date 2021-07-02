@@ -6,10 +6,10 @@ import { Link, useHistory } from "react-router-dom";
 import NavBar from "./NavBar"
 
 export default function ShopcartPage() { 
-    const { userInformation, cart, setCart } = useContext(UserContext); 
+    const { cart } = useContext(UserContext); 
     const [totalPrice, setTotalPrice] = useState(0); 
     const history = useHistory();
-
+  
     useEffect(() => 
         {setTotalPrice(cart.reduce((t, p) => t+(p.price*p.quantity),0))
     }, []);

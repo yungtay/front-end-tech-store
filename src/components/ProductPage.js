@@ -290,6 +290,24 @@ const GoToCart = styled.button`
   }
 `;
 
+const GoToCart = styled.button`
+    margin-top: 80px;
+    font-size: 20px;
+    border-radius: 5px;   
+    cursor: pointer; 
+    width: 240px;   
+    padding: 20px;
+    border: none;
+    background-color: #E99497;
+    margin-left: 15px;
+
+    @media (max-width: 640px) {            
+        font-size: 15px;
+        padding: 10px;
+        width: 150px;      
+    }
+`;
+
 const HorizontalLine = styled.div`
   height: 3px;
   background-color: #f3c583;
