@@ -115,6 +115,7 @@ const Form = styled.form`
     .adress { 
       font-size: 20px;
       margin-top: 30px;
+      text-align: center;
     }
 
     .adressInput, .celInput, .cpfInput {
