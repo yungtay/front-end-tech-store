@@ -6,6 +6,7 @@ import ProductPage from "./components/ProductPage";
 import UserContext from "./context/UserContext";
 import ShopcartPage from "./components/ShopcartPage";
 import CheckoutPage from "./components/CheckoutPage";
+import Home from "./components/Home"
 import "./styles/reset.css";
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/checkout" exact>
             <CheckoutPage/>
           </Route>
+          <Route path="/home" component={Home} exact />
         </UserContext.Provider>
       </Switch>
     </BrowserRouter>
