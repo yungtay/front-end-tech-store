@@ -12,7 +12,6 @@ export default function ProductPage() {
     const params = useParams();
     const [counter, setCounter] = useState(1);
     const [product, setProduct] = useState([]);
-    console.log(params)
    
     useEffect(() => {
         getProduct();        

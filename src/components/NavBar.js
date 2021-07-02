@@ -101,7 +101,7 @@ export default function NavBar() {
             backgroundColor: "rgba(255, 255, 255, 0.1)",
           },
           content: {
-            top: "25%",
+            top: "35%",
             left: "12.5%",
             right: "12.5%",
             bottom: "35%",
@@ -173,7 +173,7 @@ const NumberCart = styled.div`
   color: white;
   border-radius: 100%;
   z-index: 1;
-  font-size: 18px;
+  font-size: 15px;
   padding: 5px;
 
   z-index: -1;
@@ -196,15 +196,17 @@ const CartMobile = styled.div`
 
 const ModalDialog = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  overflow: hidden;
+
 
   div {
     width: 100%;
     font-size: 28px;
-    margin-bottom: 40px;
     display: flex;
     justify-content: space-evenly;
     @media (max-width: 1200px) {
@@ -216,8 +218,8 @@ const ModalDialog = styled.div`
   }
 
   button {
-    width: 30%;
-    height: 40px;
+    width: 40%;
+    height: 60px;
     border-radius: 50px;
   }
 `;
