@@ -59,16 +59,16 @@ export default function CheckoutPage() {
                 </TotalWrapper>                
                 <p className="title">Preencha seus dados:</p>
                     <Form onSubmit={closeOrder} id="paymentform">
-                        <label for="adress" className="adress">Endereço de entrega:</label>
-                        <input type="text" className="adressInput" value={adress} onChange={(e) => setAdress(e.target.value)} required/>                                           
+                        <label htmlFor="adress" className="adress">Endereço de entrega:</label>
+                        <input id="adress" type="text" className="adressInput" value={adress} onChange={(e) => setAdress(e.target.value)} required/>                                           
                             <br />                                           
-                        <label className="cel">Insira seu CPF:</label>
-                        <input type="number" className="celInput" value={celNumber} onChange={(e) => setCelNumber(e.target.value)} required />
+                        <label htmlFor="cel" className="cel">Insira seu CPF:</label>
+                        <input id="cel" type="number" className="celInput" value={celNumber} onChange={(e) => setCelNumber(e.target.value)} required />
                             <br />
-                        <label className="cpf">Insira seu número de celular:</label>
-                        <input type="number" className="cpfInput" value={cpf} onChange={(e) => setCpf(e.target.value)} required />
+                        <label htmlFor="cpf" className="cpf">Insira seu número de celular:</label>
+                        <input id="cpf" type="number" className="cpfInput" value={cpf} onChange={(e) => setCpf(e.target.value)} required />
                             <br/>
-                        <label className="payment" for="payment">Selecione uma forma de pagamento:</label>
+                        <label className="payment" htmlFor="payment">Selecione uma forma de pagamento:</label>
                             <select className="select" value={selection} onChange={(e) => setSelection(e.target.value)} id="payment" name="payment" form="payment" required>
                                 <option value="Cartão de crédito">Cartão de crédito</option>
                                 <option value="Cartão de débito">Cartão de débito</option>
